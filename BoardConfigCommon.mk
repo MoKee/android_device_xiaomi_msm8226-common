@@ -56,6 +56,9 @@ TARGET_QCOM_DISPLAY_VARIANT := legacy-armani
 HAVE_ADRENO_SOURCE          := false
 OVERRIDE_RS_DRIVER          := libRSDriver_adreno.so
 
+# Fix DEXPREOPT EXT
+PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
+
 # Shader cache config options
 # Maximum size of the  GLES Shaders that can be cached for reuse.
 # Increase the size if shaders of size greater than 12KB are used.
@@ -103,7 +106,7 @@ BOARD_SEPOLICY_UNION += \
         file_contexts \
         app.te \
         device.te
-        
+
 TARGET_RELEASETOOLS_EXTENSIONS:= device/xiaomi/msm8226-common
 
 BOARD_USES_QC_TIME_SERVICES := true
@@ -111,6 +114,3 @@ BOARD_USES_QC_TIME_SERVICES := true
 TARGET_EXCLUDE_GOOGLE_IME := true
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
-
-# Fix DEXPREOPT EXT
-PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
